@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>Save User</title>
+
+    <style>
+    .error {
+        color: red;
+    }
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h3>User Directory</h3>
+    <hr>
+
+    <p class="h4 mb-4">Save User</p>
+
+    <form action="#" th:action="@{/users/save}"
+          th:object="${user}" method="POST">
+
+        <input type="hidden" th:field="*{id}" />
+
+        <input type="text" th:field="*{username}"
+               class="form-control mb-4 col-4" placeholder="Username">
+        <p th:if="${#fields.hasErrors('username')}" th:errorclass="error" th:errors="*{username}" />
+
+        <input type="text" th:field="*{password}"
+               class="form-control mb-4 col-4" placeholder="Password">
+        <p th:if="${#fields.hasErrors('password')}" th:errorclass="error" th:errors="*{password}" />
+
+        <label class="col-form-label col-sm-4">Role:</label>
+        <div class="col-sm-8 text-left">
+                <div>
+                    <input type="radio" th:field="*{role}" th:text="ADMIN"
+                           th:value="ADMIN"  class="m-2"/>
+                </div>
+                <div>
+                    <input type="radio" th:field="*{role}" th:text="TRAINER"
+                           th:value="TRAINER"  class="m-2"/>
+                </div>
+        </div>
+        <p th:if="${#fields.hasErrors('role')}" th:errorclass="error" th:errors="*{role}" />
+
+
+        <button type="submit" class="btn btn-info col-2">Save</button>
+
+    </form>
+
+    <hr>
+    <a th:href="@{/users/list}" class="btn btn-primary btn-sm mb-3">Back to Users List</a>
+
+</div>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
