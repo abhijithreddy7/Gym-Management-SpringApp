@@ -6,14 +6,14 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
-public class UserExceptionHandler {
+public class RecordExceptionHandler {
 
     @ExceptionHandler
-    public ResponseEntity<UserErrorResponse> handleException(Exception exc){
+    public ResponseEntity<RecordNotFoundErrorResponse> handleException(Exception exc){
 
-        UserErrorResponse error = new UserErrorResponse(HttpStatus.BAD_REQUEST.value(),
+        RecordNotFoundErrorResponse error = new RecordNotFoundErrorResponse(HttpStatus.BAD_REQUEST.value(),
                 exc.getMessage(),System.currentTimeMillis());
 
-        return new ResponseEntity<UserErrorResponse>(error,HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<RecordNotFoundErrorResponse>(error,HttpStatus.BAD_REQUEST);
     }
 }

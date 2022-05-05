@@ -1,6 +1,7 @@
 package com.abhijith.gymapp.serviceImpl;
 
 import com.abhijith.gymapp.entity.Client;
+import com.abhijith.gymapp.exception.RecordNotFoundException;
 import com.abhijith.gymapp.repository.ClientRepository;
 import com.abhijith.gymapp.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,7 @@ public class ClientServiceImpl implements ClientService {
 			theClient = result.get();
 		}
 		else {
-			throw new RuntimeException("Did not find Client id - " + theId);
+			throw new RecordNotFoundException("Did not find Client id - " + theId);
 		}
 		
 		return theClient;

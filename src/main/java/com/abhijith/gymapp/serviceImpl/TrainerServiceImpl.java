@@ -1,6 +1,7 @@
 package com.abhijith.gymapp.serviceImpl;
 
 import com.abhijith.gymapp.entity.Trainer;
+import com.abhijith.gymapp.exception.RecordNotFoundException;
 import com.abhijith.gymapp.repository.TrainerRepository;
 import com.abhijith.gymapp.service.TrainerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,7 @@ public class TrainerServiceImpl implements TrainerService {
 			theTrainer = result.get();
 		}
 		else {
-			throw new RuntimeException("Did not find Trainer id - " + theId);
+			throw new RecordNotFoundException("Did not find Trainer id - " + theId);
 		}
 		
 		return theTrainer;

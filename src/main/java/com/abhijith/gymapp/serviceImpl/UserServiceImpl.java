@@ -1,7 +1,7 @@
 package com.abhijith.gymapp.serviceImpl;
 
 import com.abhijith.gymapp.entity.User;
-import com.abhijith.gymapp.exception.UserException;
+import com.abhijith.gymapp.exception.RecordNotFoundException;
 import com.abhijith.gymapp.repository.UserRepository;
 import com.abhijith.gymapp.service.UserService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
         User theUser = userRepository.findByUsername(username);
 
         if (theUser==null) {
-            throw new UserException("Did not find User with username - " + username);
+            throw new RecordNotFoundException("Did not find User with username - " + username);
         }
         return theUser;
     }
